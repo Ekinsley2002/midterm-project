@@ -65,12 +65,41 @@ const story = [
         choices: [],
         consequences: [],
         image: "secret_world.jpg"
-    }
+    },
+    // Additional stages
+    {
+        text: "You enter a dark forest.",
+        choices: ["Explore the forest", "Try to find a way back"],
+        consequences: [11, 12],
+        image: "forest.jpg"
+    },
+    {
+        text: "You encounter a mysterious creature.",
+        choices: ["Approach the creature", "Run away"],
+        consequences: [13, 14],
+        image: "creature.jpg"
+    },
+    {
+        text: "You find an ancient artifact.",
+        choices: ["Take the artifact", "Leave it and continue exploring"],
+        consequences: [15, 16],
+        image: "artifact.jpg"
+    },
+    {
+        text: "You reach a crossroads in the forest.",
+        choices: ["Go left", "Go right"],
+        consequences: [17, 18],
+        image: "crossroads.jpg"
+    },
 ];
-
 
 let currentStage = 0;
 
+// Function to start/restart the game
+function startGame() {
+    currentStage = 0;
+    updatePage();
+}
 // Function to start/restart the game
 function startGame() {
     currentStage = 0;
