@@ -106,15 +106,57 @@ function updatePage() {
     }
 }
 
-// Function to handle player choices
+// Function to handle player choices and game endings
 function makeChoice(choiceIndex) {
     const stage = story[currentStage];
     const nextStageIndex = stage.consequences[choiceIndex];
-    
+
     if (nextStageIndex !== undefined) {
         currentStage = nextStageIndex;
         updatePage();
+    } else {
+        // Handle different endings
+        switch (currentStage) {
+            case 5: // Escaping the cave
+                showEnding("Congratulations! You've escaped the cave and won the game.", "escape.jpg");
+                break;
+            case 9: // Becoming rich and safe
+                showEnding("You take the gold and make a daring escape just before the cave collapses. You're rich and safe!", "rich_escape.jpg");
+                break;
+            case 10: // Living happily ever after in a secret world
+                showEnding("You find a hidden passage that leads to a secret world. You live happily ever after.", "secret_world.jpg");
+                break;
+            case 7: // Accepting your fate and remaining trapped
+                showEnding("You accept your fate and remain trapped in the cave forever.", "trapped_forever.jpg");
+                break;
+            case 8: // Opening the chest but getting poisoned and dying
+                showEnding("You open the chest, but it's a trap! You're poisoned and die.", "poisoned.jpg");
+                break;
+            case 6: // Taking the gold but being trapped when the cave collapses
+                showEnding("You take the gold and become rich, but the cave collapses, trapping you inside forever.", "trapped_forever.jpg");
+                break;
+            default:
+                break;
+        }
     }
+}
+
+// Function to display an ending
+function showEnding(text, image) {
+    const storyElement = document.getElementById("story");
+    const choicesElement = document.getElementById("choices");
+    const imageElement = document.getElementById("image");
+
+    storyElement.textContent = text;
+
+    // Remove choices buttons
+    choicesElement.innerHTML = "";
+
+    // Display the ending image
+    imageElement.innerHTML = `<img src="${image}" alt="Ending Scene">`;
+
+    // Add a restart button
+    choicesElement.innerHTML += '<button onclick="startGame()">Restart</button>';
 }
 
 // Start the game
