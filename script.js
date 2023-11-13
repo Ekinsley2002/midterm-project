@@ -146,7 +146,7 @@ function makeChoice(choiceIndex) {
             case 2: // Handle the "Keep searching for an exit" choice in stage 2
                 if (choiceIndex === 0) {
                     // Add custom logic here for this choice
-                    showEnding("You keep searching but find nothing. Eventually, you run out of supplies and perish in the cave.", "perish.jpg");
+                    showEnding("You keep searching and eventually find an exit. Congratulations, you've escaped the cave!", "escape.jpg");
                 } else {
                     // Handle the "Accept your fate" choice
                     showEnding("You accept your fate and remain trapped in the cave forever.", "trapped_forever.jpg");
