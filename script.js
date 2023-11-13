@@ -1,19 +1,19 @@
 // Define your story objects with text, choices, consequences, and images
 const story = [
     {
-        text: "You find yourself in a dark cave.",
-        choices: ["Go deeper into the cave", "Try to find a way out"],
+        text: "You find yourself in a dark castle.",
+        choices: ["Explore the castle", "Try to find a way out"],
         consequences: [1, 2],
-        image: "cave.jpg"
+        image: "castle.jpg"
     },
     {
-        text: "You venture deeper into the cave and discover a treasure chest.",
+        text: "You venture deeper into the castle and discover a treasure chest.",
         choices: ["Open the chest", "Leave it and continue exploring"],
         consequences: [3, 4],
         image: "treasure.jpg"
     },
     {
-        text: "You find yourself trapped in the cave with no way out.",
+        text: "You find yourself trapped in the castle with no way out.",
         choices: ["Keep searching for an exit", "Accept your fate"],
         consequences: [2, 5],
         image: "trapped.jpg"
@@ -25,25 +25,25 @@ const story = [
         image: "gold.jpg"
     },
     {
-        text: "You decide to leave the treasure and continue exploring the cave.",
-        choices: ["Go deeper into the cave", "Try to find a way out"],
+        text: "You decide to leave the treasure and continue exploring the castle.",
+        choices: ["Explore the castle", "Try to find a way out"],
         consequences: [1, 2],
-        image: "cave.jpg"
+        image: "castle.jpg"
     },
     {
-        text: "You search for an exit and finally find daylight. You've escaped the cave!",
+        text: "You search for an exit and finally find daylight. You've escaped the castle!",
         choices: [],
         consequences: [],
         image: "escape.jpg"
     },
     {
-        text: "You take the gold and become rich, but the cave collapses, trapping you inside forever.",
+        text: "You take the gold and become rich, but the castle collapses, trapping you inside forever.",
         choices: [],
         consequences: [],
         image: "trapped_forever.jpg"
     },
     {
-        text: "You accept your fate and remain trapped in the cave forever.",
+        text: "You accept your fate and remain trapped in the castle forever.",
         choices: [],
         consequences: [],
         image: "trapped_forever.jpg"
@@ -55,7 +55,7 @@ const story = [
         image: "poisoned.jpg"
     },
     {
-        text: "You take the gold and make a daring escape just before the cave collapses. You're rich and safe!",
+        text: "You take the gold and make a daring escape just before the castle collapses. You're rich and safe!",
         choices: [],
         consequences: [],
         image: "rich_escape.jpg"
