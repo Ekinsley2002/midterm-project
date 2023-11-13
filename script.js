@@ -15,7 +15,7 @@ const story = [
     {
         text: "You find yourself trapped in the castle with no way out.",
         choices: ["Keep searching for an exit", "Accept your fate"],
-        consequences: [5, 6], // Updated consequences for this stage
+        consequences: [8, 9], // Updated consequences for this stage
         image: "trapped.jpg"
     },
     {
