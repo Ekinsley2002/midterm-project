@@ -115,13 +115,21 @@ function makeChoice(choiceIndex) {
         currentStage = nextStageIndex;
         updatePage();
     } else {
-        // Handle different endings
+        // Handle different endings based on specific scenarios
         switch (currentStage) {
             case 5: // Escaping the cave
-                showEnding("Congratulations! You've escaped the cave and won the game.", "escape.jpg");
+                if (choiceIndex === 0) {
+                    showEnding("Congratulations! You've escaped the cave and won the game.", "escape.jpg");
+                } else {
+                    showEnding("You took a wrong turn and got lost in the cave forever.", "lost.jpg");
+                }
                 break;
             case 9: // Becoming rich and safe
-                showEnding("You take the gold and make a daring escape just before the cave collapses. You're rich and safe!", "rich_escape.jpg");
+                if (choiceIndex === 0) {
+                    showEnding("You take the gold and make a daring escape just before the cave collapses. You're rich and safe!", "rich_escape.jpg");
+                } else {
+                    showEnding("You took too long to decide, and the cave collapsed, trapping you inside forever.", "trapped_forever.jpg");
+                }
                 break;
             case 10: // Living happily ever after in a secret world
                 showEnding("You find a hidden passage that leads to a secret world. You live happily ever after.", "secret_world.jpg");
@@ -140,7 +148,6 @@ function makeChoice(choiceIndex) {
         }
     }
 }
-
 // Function to display an ending
 function showEnding(text, image) {
     const storyElement = document.getElementById("story");
