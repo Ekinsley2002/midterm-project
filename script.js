@@ -47,6 +47,24 @@ const story = [
         choices: [],
         consequences: [],
         image: "trapped_forever.jpg"
+    },
+    {
+        text: "You open the chest, but it's a trap! You're poisoned and die.",
+        choices: [],
+        consequences: [],
+        image: "poisoned.jpg"
+    },
+    {
+        text: "You take the gold and make a daring escape just before the cave collapses. You're rich and safe!",
+        choices: [],
+        consequences: [],
+        image: "rich_escape.jpg"
+    },
+    {
+        text: "You find a hidden passage that leads to a secret world. You live happily ever after.",
+        choices: [],
+        consequences: [],
+        image: "secret_world.jpg"
     }
 ];
 
