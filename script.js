@@ -117,43 +117,24 @@ function makeChoice(choiceIndex) {
     } else {
         // Handle different endings based on specific scenarios
         switch (currentStage) {
-            case 5: // Escaping the cave
-                if (choiceIndex === 0) {
-                    showEnding("Congratulations! You've escaped the cave and won the game.", "escape.jpg");
-                } else {
-                    showEnding("You took a wrong turn and got lost in the cave forever.", "lost.jpg");
-                }
-                break;
-            case 9: // Becoming rich and safe
-                if (choiceIndex === 0) {
-                    showEnding("You take the gold and make a daring escape just before the cave collapses. You're rich and safe!", "rich_escape.jpg");
-                } else {
-                    showEnding("You took too long to decide, and the cave collapsed, trapping you inside forever.", "trapped_forever.jpg");
-                }
-                break;
-            case 10: // Living happily ever after in a secret world
-                showEnding("You find a hidden passage that leads to a secret world. You live happily ever after.", "secret_world.jpg");
-                break;
-            case 7: // Accepting your fate and remaining trapped
-                showEnding("You accept your fate and remain trapped in the cave forever.", "trapped_forever.jpg");
-                break;
-            case 8: // Opening the chest but getting poisoned and dying
-                showEnding("You open the chest, but it's a trap! You're poisoned and die.", "poisoned.jpg");
-                break;
-            case 6: // Taking the gold but being trapped when the cave collapses
-                showEnding("You take the gold and become rich, but the cave collapses, trapping you inside forever.", "trapped_forever.jpg");
-                break;
+            // ... Other cases ...
             case 2: // Handle the "Keep searching for an exit" choice in stage 2
                 if (choiceIndex === 0) {
                     // Add custom logic here for this choice
-                    showEnding("You keep searching and eventually find an exit. Congratulations, you've escaped the cave!", "escape.jpg");
+                    const randomOutcome = Math.random(); // Generate a random number
+                    if (randomOutcome < 0.5) {
+                        // Player succeeds in finding an exit
+                        showEnding("You keep searching and eventually find an exit. Congratulations, you've escaped the castle!", "escape.jpg");
+                    } else {
+                        // Player fails to find an exit
+                        showEnding("You keep searching but find nothing. Eventually, you run out of supplies and perish in the castle.", "perish.jpg");
+                    }
                 } else {
                     // Handle the "Accept your fate" choice
-                    showEnding("You accept your fate and remain trapped in the cave forever.", "trapped_forever.jpg");
+                    showEnding("You accept your fate and remain trapped in the castle forever.", "trapped_forever.jpg");
                 }
                 break;
-            default:
-                break;
+            // ... Other cases ...
         }
     }
 }
