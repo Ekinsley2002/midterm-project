@@ -143,6 +143,15 @@ function makeChoice(choiceIndex) {
             case 6: // Taking the gold but being trapped when the cave collapses
                 showEnding("You take the gold and become rich, but the cave collapses, trapping you inside forever.", "trapped_forever.jpg");
                 break;
+            case 2: // Handle the "Keep searching for an exit" choice in stage 2
+                if (choiceIndex === 0) {
+                    // Add custom logic here for this choice
+                    showEnding("You keep searching but find nothing. Eventually, you run out of supplies and perish in the cave.", "perish.jpg");
+                } else {
+                    // Handle the "Accept your fate" choice
+                    showEnding("You accept your fate and remain trapped in the cave forever.", "trapped_forever.jpg");
+                }
+                break;
             default:
                 break;
         }
