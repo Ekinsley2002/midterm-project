@@ -93,98 +93,55 @@ const story = [
     },
 ];
 
-let currentStage = 0;
+// Selecting elements from the HTML
+const storyElement = document.getElementById('story');
+const choicesElement = document.getElementById('choices');
+const imageElement = document.getElementById('image');
 
-// Function to start/restart the game
+let currentState = 0; // This will keep track of the current state of the game
+
 function startGame() {
-    currentStage = 0;
-    updatePage();
-}
-// Function to start/restart the game
-function startGame() {
-    currentStage = 0;
-    updatePage();
+    currentState = 0;
+    showStory(currentState);
 }
 
-// Function to update the page with the current story stage
-function updatePage() {
-    const stage = story[currentStage];
-    const storyElement = document.getElementById("story");
-    const choicesElement = document.getElementById("choices");
-    const imageElement = document.getElementById("image");
+function showStory(stateIndex) {
+    const state = story[stateIndex];
+    
+    // Update story text
+    storyElement.innerText = state.text;
 
-    storyElement.textContent = stage.text;
+    // Update choices
+    choicesElement.innerHTML = ''; // Clear previous choices
+    state.choices.forEach((choice, index) => {
+        const button = document.createElement('button');
+        button.innerText = choice;
+        button.addEventListener('click', () => selectChoice(state.consequences[index]));
+        choicesElement.appendChild(button);
+    });
 
-    // Clear previous choices
-    choicesElement.innerHTML = "";
-
-    // Display choices and add event listeners
-    for (let i = 0; i < stage.choices.length; i++) {
-        const choiceButton = document.createElement("button");
-        choiceButton.textContent = stage.choices[i];
-        choiceButton.addEventListener("click", () => makeChoice(i));
-        choicesElement.appendChild(choiceButton);
-    }
-
-    // Display image
-    imageElement.innerHTML = `<img src="${stage.image}" alt="Scene">`;
-
-    // Check for an ending
-    if (stage.choices.length === 0) {
-        // Game over
-        choicesElement.innerHTML = '<button onclick="startGame()">Restart</button>';
-    }
+    // Update image
+    displayImage(state.image);
 }
 
-// Function to handle player choices and game endings
-function makeChoice(choiceIndex) {
-    const stage = story[currentStage];
-    const nextStageIndex = stage.consequences[choiceIndex];
-
-    if (nextStageIndex !== undefined) {
-        currentStage = nextStageIndex;
-        updatePage();
+function selectChoice(nextState) {
+    if (nextState >= story.length || nextState < 0) {
+        // Restart the game if the next state is out of bounds
+        startGame();
     } else {
-        // Handle different endings based on specific scenarios
-        switch (currentStage) {
-            // ... Other cases ...
-            case 2: // Handle the "Keep searching for an exit" choice in stage 2
-                if (choiceIndex === 0) {
-                    // Add custom logic here for this choice
-                    const randomOutcome = Math.random(); // Generate a random number
-                    if (randomOutcome < 0.5) {
-                        // Player succeeds in finding an exit
-                        showEnding("You keep searching and eventually find an exit. Congratulations, you've escaped the castle!", "escape.jpg");
-                    } else {
-                        // Player fails to find an exit
-                        showEnding("You keep searching but find nothing. Eventually, you run out of supplies and perish in the castle.", "perish.jpg");
-                    }
-                } else {
-                    // Handle the "Accept your fate" choice
-                    showEnding("You accept your fate and remain trapped in the castle forever.", "trapped_forever.jpg");
-                }
-                break;
-            // ... Other cases ...
-        }
+        showStory(nextState);
     }
 }
-// Function to display an ending
-function showEnding(text, image) {
-    const storyElement = document.getElementById("story");
-    const choicesElement = document.getElementById("choices");
-    const imageElement = document.getElementById("image");
 
-    storyElement.textContent = text;
-
-    // Remove choices buttons
-    choicesElement.innerHTML = "";
-
-    // Display the ending image
-    imageElement.innerHTML = `<img src="${image}" alt="Ending Scene">`;
-
-    // Add a restart button
-    choicesElement.innerHTML += '<button onclick="startGame()">Restart</button>';
+function displayImage(imageFileName) {
+    if (imageFileName) {
+        imageElement.innerHTML = `<img src="${imageFileName}" alt="Story Image">`;
+        imageElement.style.display = 'block';
+    } else {
+        imageElement.style.display = 'none';
+    }
 }
 
-// Start the game
+// Start the game when the script loads
 startGame();
+
