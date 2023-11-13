@@ -15,13 +15,13 @@ const story = [
     {
         text: "You find yourself trapped in the castle with no way out.",
         choices: ["Keep searching for an exit", "Accept your fate"],
-        consequences: [2, 5],
+        consequences: [5, 6], // Updated consequences for this stage
         image: "trapped.jpg"
     },
     {
         text: "You open the chest and find a pile of gold coins.",
         choices: ["Take the gold", "Leave it and continue exploring"],
-        consequences: [6, 4],
+        consequences: [7, 4],
         image: "gold.jpg"
     },
     {
@@ -67,6 +67,7 @@ const story = [
         image: "secret_world.jpg"
     }
 ];
+
 
 let currentStage = 0;
 
