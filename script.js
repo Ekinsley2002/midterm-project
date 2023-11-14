@@ -111,18 +111,30 @@ function showStory(stateIndex) {
     // Update story text
     storyElement.innerText = state.text;
 
-    // Update choices
-    choicesElement.innerHTML = ''; // Clear previous choices
-    state.choices.forEach((choice, index) => {
-        const button = document.createElement('button');
-        button.innerText = choice;
-        button.addEventListener('click', () => selectChoice(state.consequences[index]));
-        choicesElement.appendChild(button);
-    });
+    // Clear previous choices
+    choicesElement.innerHTML = '';
+
+    // Check if there are choices available
+    if (state.choices.length > 0) {
+        // If there are choices, display them
+        state.choices.forEach((choice, index) => {
+            const button = document.createElement('button');
+            button.innerText = choice;
+            button.addEventListener('click', () => selectChoice(state.consequences[index]));
+            choicesElement.appendChild(button);
+        });
+    } else {
+        // If there are no choices, display a restart button
+        const restartButton = document.createElement('button');
+        restartButton.innerText = 'Restart Game';
+        restartButton.addEventListener('click', startGame);
+        choicesElement.appendChild(restartButton);
+    }
 
     // Update image
     displayImage(state.image);
 }
+
 
 function selectChoice(nextState) {
     if (nextState >= story.length || nextState < 0) {
