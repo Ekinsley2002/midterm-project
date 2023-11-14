@@ -136,6 +136,24 @@ function showStory(stateIndex) {
 
 
 function selectChoice(nextState) {
+    // Check if the player chooses to open the chest
+    if (currentState === 1 && nextState === 3) { // Assuming currentState 1 is where the chest is, and nextState 3 is opening it
+        // Generate a random number between 1 and 3
+        const randomOutcome = Math.floor(Math.random() * 3) + 1;
+
+        // Determine the outcome based on the random number
+        switch (randomOutcome) {
+            case 1:
+                nextState = 3; // "You open the chest and find a pile of gold coins."
+                break;
+            case 2:
+                nextState = 6; // "You take the gold and become rich, but the castle collapses, trapping you inside forever."
+                break;
+            case 3:
+                nextState = 8; // "You open the chest, but it's a trap! You're poisoned and die."
+                break;
+        }
+    }
     if (nextState >= story.length || nextState < 0) {
         // Restart the game if the next state is out of bounds
         startGame();
