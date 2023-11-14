@@ -135,10 +135,9 @@ function selectChoice(nextState) {
 
 function displayImage(imageFileName) {
     if (imageFileName) {
-        imageElement.innerHTML = `<img src="${imageFileName}" alt="Story Image">`;
-        imageElement.style.display = 'block';
+        imageElement.innerHTML = `<img src="${imageFileName}" alt="Story Image" style="display: block;">`;
     } else {
-        imageElement.style.display = 'none';
+        imageElement.innerHTML = '';
     }
 }
 
