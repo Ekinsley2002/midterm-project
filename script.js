@@ -135,9 +135,11 @@ function selectChoice(nextState) {
 
 function displayImage(imageFileName) {
     if (imageFileName) {
-        imageElement.innerHTML = `<img src="${imageFileName}" alt="Story Image" style="display: block;">`;
+        imageElement.innerHTML = `<img src="${imageFileName}" alt="Story Image">`;
+        imageElement.style.display = 'block'; // Make sure the container is visible
     } else {
         imageElement.innerHTML = '';
+        imageElement.style.display = 'none'; // Hide the container when there is no image
     }
 }
 
