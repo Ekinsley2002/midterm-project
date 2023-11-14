@@ -15,13 +15,13 @@ const story = [
     {
         text: "You find yourself trapped in the castle with no way out.",
         choices: ["Keep searching for an exit", "Accept your fate"],
-        consequences: [8, 9], // Updated consequences for this stage
+        consequences: [1, 7],
         image: "trapped.jpg"
     },
     {
         text: "You open the chest and find a pile of gold coins.",
         choices: ["Take the gold", "Leave it and continue exploring"],
-        consequences: [7, 4],
+        consequences: [6, 1],
         image: "gold.jpg"
     },
     {
@@ -66,7 +66,6 @@ const story = [
         consequences: [],
         image: "secret_world.jpg"
     },
-    // Additional stages
     {
         text: "You enter a dark forest.",
         choices: ["Explore the forest", "Try to find a way back"],
@@ -82,7 +81,7 @@ const story = [
     {
         text: "You find an ancient artifact.",
         choices: ["Take the artifact", "Leave it and continue exploring"],
-        consequences: [15, 16],
+        consequences: [0, 0],
         image: "artifact.jpg"
     },
     {
