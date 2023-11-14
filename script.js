@@ -4,7 +4,7 @@ const story = [
         text: "You find yourself in a dark castle.",
         choices: ["Explore the castle", "Try to find a way out"],
         consequences: [1, 2],
-        image: "castle.jpg"
+        image: "castle1.jpg"
     },
     {
         text: "You venture deeper into the castle and discover a treasure chest.",
